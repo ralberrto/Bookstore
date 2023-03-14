@@ -7,5 +7,16 @@
     <h2><a href="">{{ book.title }}</a></h2>
     <p>Author: {{ book.author }}</p>
     <p>Price: {{ book.price }}</p>
+    <div>
+        <h3>Reviews</h3>
+        <ul>
+        {% if not book.reviews.all %}
+            <em>There are no reviews for this book.</em>
+        {% endif %}
+            {% for review in book.reviews.all %}
+            <li>{{ review.review }} - <em>{{ review.author }}</em></li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock content %}
